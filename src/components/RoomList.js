@@ -23,13 +23,13 @@ export class RoomList extends Component {
 
     handleChange(e) {
         this.setState({
-            newRoomName: this.state.newRoomName
+            newRoomName: e.target.value
         });
     }
 
     createRoom(newRoomName) {
         this.roomsRef.push({
-            name: newRoomName
+            name: this.state.newRoomName
         });
         this.setState({
             newRoomName: ''
@@ -39,9 +39,9 @@ export class RoomList extends Component {
 
     render() {
         const roomList = this.state.rooms.map((room) =>
-            <li key={room.key}>{room.newRoomName}</li>
-        );
+            <li key={room.key}>{room.name}</li>
 
+        );
         const roomForm = (
             <form onSubmit = {this.createRoom}>
                 <input type='text' value={this.state.newRoomName} onChange={this.handleChange} />
@@ -51,7 +51,7 @@ export class RoomList extends Component {
 
         return (
             <div>
-                <div>{roomForm}</div>
+                <span>{roomForm}</span>
                 <ul>{roomList}</ul>
             </div>
         );
