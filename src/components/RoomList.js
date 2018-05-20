@@ -34,6 +34,7 @@ export class RoomList extends Component {
         this.setState({
             newRoomName: ''
         });
+        newRoomName.preventDefault();
     }
 
 
